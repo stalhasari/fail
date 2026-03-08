@@ -1,0 +1,341 @@
+{
+  "disease": "hypertension",
+  "disease_name_tr": "Hipertansiyon",
+  "disease_name_en": "Hypertension",
+  "model_version": "v1",
+  "model_type": "XGBClassifier",
+  "model_file": "xgboost_model.pkl",
+  "num_classes": 2,
+  "classes": {
+    "0": {
+      "name_tr": "Normal Tansiyon",
+      "name_en": "Normal Blood Pressure",
+      "color": "#4CAF50",
+      "description": "Kan basıncı normal sınırlarda, hipertansiyon riski yok"
+    },
+    "1": {
+      "name_tr": "Hipertansiyon",
+      "name_en": "Hypertension",
+      "color": "#F44336",
+      "description": "Hipertansiyon mevcut, tedavi ve takip gerekli"
+    }
+  },
+  "target_column": "Target_Hipertansiyon_Durumu",
+  "features": [
+    "TANI_YASI",
+    "Ağrı skoru",
+    "Kronik Hastalıklar Diğer",
+    "Boy",
+    "Kilo",
+    "CINSIYET_NUM",
+    "Sigara_NUM",
+    "Alkol_NUM",
+    "Madde_NUM",
+    "Hipertansiyon Hastada_NUM",
+    "Diyabet Hastada_NUM",
+    "Kalp Damar Hastada_NUM",
+    "Kan Hastalıkları Hastada_NUM",
+    "Glukoz, Açlık",
+    "Hemoglobin",
+    "Hemoglobin A1c (HbA1c)",
+    "Hesaplanmış Ortalama Glukoz (eAG)",
+    "Kolesterol, LDL (Direkt)",
+    "Kolesterol, Total",
+    "Kreatinin, Serum",
+    "Tiroid Stimülan Hormon (TSH)",
+    "Trigliserid",
+    "Risk_Diyabet",
+    "Risk_Obezite",
+    "Risk_Bobrek_Yetmezligi",
+    "Risk_Hiperlipidemi",
+    "Risk_Uyku_Apnesi",
+    "Risk_Kalp_Damar",
+    "Risk_Inme_Gecmisi",
+    "Tansiyon_Ilaci_Kullaniyor_Mu",
+    "Hemoglobin A1c (HBA1c)",
+    "Kolesterol, HDL",
+    "Nabız",
+    "Hemoglobin (HGB)",
+    "Ortalama eritrosit hemoglobin konsantrasyonu (MCHC)",
+    "Ortalama eritrosit hemoglobini (MCH)",
+    "Ağrısı var mı_Hayır",
+    "Sıklık_Sürekli"
+  ],
+  "num_features": 38,
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "eval_metric": "logloss",
+    "scale_pos_weight": "auto (class ratio)",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "input_schema": {
+    "TANI_YASI": {
+      "type": "float",
+      "label": "Yaş",
+      "min": 0,
+      "max": 120,
+      "required": true
+    },
+    "CINSIYET_NUM": {
+      "type": "int",
+      "label": "Cinsiyet",
+      "options": {
+        "0": "Kadın",
+        "1": "Erkek"
+      },
+      "required": true
+    },
+    "Boy": {
+      "type": "float",
+      "label": "Boy (cm)",
+      "min": 50,
+      "max": 220,
+      "required": false
+    },
+    "Kilo": {
+      "type": "float",
+      "label": "Kilo (kg)",
+      "min": 20,
+      "max": 250,
+      "required": false
+    },
+    "Nabız": {
+      "type": "float",
+      "label": "Nabız (bpm)",
+      "min": 30,
+      "max": 220,
+      "required": false
+    },
+    "Sigara_NUM": {
+      "type": "int",
+      "label": "Sigara",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Alkol_NUM": {
+      "type": "int",
+      "label": "Alkol",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Madde_NUM": {
+      "type": "int",
+      "label": "Madde Kullanımı",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Hipertansiyon Hastada_NUM": {
+      "type": "int",
+      "label": "Ailede Hipertansiyon",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Diyabet Hastada_NUM": {
+      "type": "int",
+      "label": "Diyabet Var mı",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Kalp Damar Hastada_NUM": {
+      "type": "int",
+      "label": "Kalp Damar Hastalığı",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Kan Hastalıkları Hastada_NUM": {
+      "type": "int",
+      "label": "Kan Hastalıkları",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Tansiyon_Ilaci_Kullaniyor_Mu": {
+      "type": "int",
+      "label": "Tansiyon İlacı Kullanımı",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Glukoz, Açlık": {
+      "type": "float",
+      "label": "Açlık Glukozu (mg/dL)",
+      "min": 40,
+      "max": 600,
+      "required": false
+    },
+    "Hemoglobin": {
+      "type": "float",
+      "label": "Hemoglobin (g/dL)",
+      "min": 3,
+      "max": 25,
+      "required": false
+    },
+    "Hemoglobin A1c (HbA1c)": {
+      "type": "float",
+      "label": "HbA1c (%)",
+      "min": 3.0,
+      "max": 20.0,
+      "required": false
+    },
+    "Hesaplanmış Ortalama Glukoz (eAG)": {
+      "type": "float",
+      "label": "Ortalama Glukoz - eAG (mg/dL)",
+      "min": 50,
+      "max": 500,
+      "required": false
+    },
+    "Kolesterol, LDL (Direkt)": {
+      "type": "float",
+      "label": "LDL Kolesterol (mg/dL)",
+      "min": 10,
+      "max": 400,
+      "required": false
+    },
+    "Kolesterol, Total": {
+      "type": "float",
+      "label": "Total Kolesterol (mg/dL)",
+      "min": 50,
+      "max": 600,
+      "required": false
+    },
+    "Kolesterol, HDL": {
+      "type": "float",
+      "label": "HDL Kolesterol (mg/dL)",
+      "min": 10,
+      "max": 150,
+      "required": false
+    },
+    "Kreatinin, Serum": {
+      "type": "float",
+      "label": "Kreatinin - Serum (mg/dL)",
+      "min": 0.1,
+      "max": 20.0,
+      "required": false
+    },
+    "Tiroid Stimülan Hormon (TSH)": {
+      "type": "float",
+      "label": "TSH (mIU/L)",
+      "min": 0.01,
+      "max": 100.0,
+      "required": false
+    },
+    "Trigliserid": {
+      "type": "float",
+      "label": "Trigliserid (mg/dL)",
+      "min": 20,
+      "max": 2000,
+      "required": false
+    },
+    "Ağrı skoru": {
+      "type": "float",
+      "label": "Ağrı Skoru (VAS)",
+      "min": 0,
+      "max": 10,
+      "required": false
+    },
+    "Risk_Diyabet": {
+      "type": "int",
+      "label": "Diyabet Risk Faktörü",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Risk_Obezite": {
+      "type": "int",
+      "label": "Obezite Risk Faktörü",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Risk_Bobrek_Yetmezligi": {
+      "type": "int",
+      "label": "Böbrek Yetmezliği Risk Faktörü",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Risk_Hiperlipidemi": {
+      "type": "int",
+      "label": "Hiperlipidemi Risk Faktörü",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Risk_Uyku_Apnesi": {
+      "type": "int",
+      "label": "Uyku Apnesi Risk Faktörü",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Risk_Kalp_Damar": {
+      "type": "int",
+      "label": "Kalp Damar Hastalığı Risk Faktörü",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Risk_Inme_Gecmisi": {
+      "type": "int",
+      "label": "İnme Geçmişi Risk Faktörü",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    }
+  },
+  "performance": {
+    "note": "Model eğitim sonuçlarından güncellenmelidir",
+    "test_accuracy": null,
+    "test_roc_auc": null,
+    "test_precision": null,
+    "test_recall": null,
+    "test_f1": null
+  },
+  "training_config": {
+    "test_size": 0.2,
+    "stratified": true,
+    "random_state": 42,
+    "data_source": "Check_Up_Anadata/*_Adim6_ML_Hazir.csv",
+    "one_hot_encoding": true,
+    "drop_first": true
+  }
+}

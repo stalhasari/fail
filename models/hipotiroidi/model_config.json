@@ -1,0 +1,187 @@
+{
+  "disease": "hypothyroid",
+  "disease_name_tr": "Hipotiroidizm",
+  "disease_name_en": "Hypothyroidism",
+  "model_version": "v2",
+  "model_type": "XGBClassifier",
+  "num_classes": 3,
+  "classes": {
+    "0": {
+      "name_tr": "Sağlıklı",
+      "name_en": "Healthy",
+      "color": "#4CAF50",
+      "description": "Hipotiroidizm riski yok veya minimal"
+    },
+    "1": {
+      "name_tr": "Düşük Risk",
+      "name_en": "Low Risk",
+      "color": "#FF9800",
+      "description": "Hipotiroidizm açısından düşük risk, takip önerilir"
+    },
+    "2": {
+      "name_tr": "Hipotiroidizm",
+      "name_en": "Hypothyroidism",
+      "color": "#F44336",
+      "description": "Hipotiroidizm mevcut (subklinik/kontrollü/kontrolsüz)"
+    }
+  },
+  "features": [
+    "NLP_TEDAVI_FLAG",
+    "KOMORBIDITE_SAYISI",
+    "YAS_GRUBU",
+    "TOPLAM_GELIS_SAYISI",
+    "CINSIYET_ENCODED",
+    "LEVOTIROKSIN_VAR",
+    "TIROID_ILACI_VAR",
+    "TIROID_ILAC_CESIDI",
+    "GELIS_SAYISI",
+    "BENZERSIZ_TANI_SAYISI",
+    "TANI_YASI",
+    "NLP_SEMPTOMLAR_COUNT",
+    "EPISODE_SAYISI",
+    "NLP_RISK_FAKTORLERI_FLAG",
+    "NLP_TEDAVI_COUNT",
+    "TOPLAM_RECETE",
+    "NLP_KOMPLIKASYONLAR_FLAG",
+    "NLP_SEMPTOMLAR_FLAG",
+    "ILK_TANI_SON_TANI_GUN_FARKI",
+    "Nabız",
+    "LAB_HEMATOKRIT_SON_mean",
+    "KB_D",
+    "LAB_KREATININ_SERUM_SON_max",
+    "LAB_EGFR_SON_max",
+    "LAB_HEMOGLOBIN_SON_mean",
+    "LAB_EGFR_SON_last",
+    "BMI",
+    "BENZERSIZ_TEST",
+    "LAB_HEMOGLOBIN_SON_max",
+    "KB_S",
+    "TOPLAM_LAB_TEST",
+    "LAB_HEMATOKRIT_SON_max",
+    "Kilo",
+    "LAB_EGFR_SON_mean",
+    "LAB_KREATININ_SERUM_SON_mean",
+    "Alkol",
+    "LAB_KREATININ_SERUM_SON_last",
+    "LAB_HEMATOKRIT_SON_last",
+    "Boy",
+    "TSH_NORMAL",
+    "Sigara",
+    "LAB_HEMOGLOBIN_SON_last",
+    "NLP_KOMPLIKASYONLAR_COUNT",
+    "NLP_RISK_FAKTORLERI_COUNT",
+    "TSH_YUKSEK",
+    "TSH_COK_YUKSEK",
+    "FT4_DUSUK"
+  ],
+  "num_features": 47,
+  "input_schema": {
+    "TANI_YASI": {
+      "type": "float",
+      "label": "Yaş",
+      "min": 0,
+      "max": 120,
+      "required": true
+    },
+    "CINSIYET_ENCODED": {
+      "type": "int",
+      "label": "Cinsiyet",
+      "options": {
+        "0": "Kadın",
+        "1": "Erkek"
+      },
+      "required": true
+    },
+    "BMI": {
+      "type": "float",
+      "label": "BMI (kg/m²)",
+      "min": 10,
+      "max": 60,
+      "required": false
+    },
+    "KB_S": {
+      "type": "float",
+      "label": "Sistolik Kan Basıncı (mmHg)",
+      "min": 60,
+      "max": 250,
+      "required": false
+    },
+    "KB_D": {
+      "type": "float",
+      "label": "Diastolik Kan Basıncı (mmHg)",
+      "min": 30,
+      "max": 150,
+      "required": false
+    },
+    "Sigara": {
+      "type": "int",
+      "label": "Sigara",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Alkol": {
+      "type": "int",
+      "label": "Alkol",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "Kilo": {
+      "type": "float",
+      "label": "Kilo (kg)",
+      "min": 20,
+      "max": 250,
+      "required": false
+    },
+    "Boy": {
+      "type": "float",
+      "label": "Boy (cm)",
+      "min": 50,
+      "max": 220,
+      "required": false
+    },
+    "Nabız": {
+      "type": "float",
+      "label": "Nabız (atım/dk)",
+      "min": 30,
+      "max": 200,
+      "required": false
+    },
+    "KOMORBIDITE_SAYISI": {
+      "type": "int",
+      "label": "Eşlik Eden Hastalık Sayısı",
+      "min": 0,
+      "max": 50,
+      "required": false
+    },
+    "LEVOTIROKSIN_VAR": {
+      "type": "int",
+      "label": "Levotiroksin Kullanımı",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    },
+    "TIROID_ILACI_VAR": {
+      "type": "int",
+      "label": "Tiroid İlacı Kullanımı",
+      "options": {
+        "0": "Hayır",
+        "1": "Evet"
+      },
+      "required": false
+    }
+  },
+  "performance": {
+    "test_accuracy": 0.6536,
+    "test_f1_macro": 0.6049,
+    "test_f1_weighted": 0.6599,
+    "overfitting_gap": 4.13
+  }
+}
